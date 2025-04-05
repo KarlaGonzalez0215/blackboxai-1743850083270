@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FilterMind</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    .sidebar {
+      transition: all 0.3s ease;
+    }
+    .emergency-btn {
+      box-shadow: 0 0 20px rgba(239, 68, 68, 0.7);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body class="bg-blue-50 min-h-screen">
+  <div class="flex">
+    <!-- Sidebar -->
+    <div class="sidebar bg-blue-800 text-white w-64 min-h-screen p-4">
+      <div class="flex items-center mb-8">
+        <span class="text-xl font-bold">FilterMind</span>
+      </div>
+      
+      <div class="mb-8">
+        <h3 class="text-lg font-semibold mb-4">Pantalla Principal</h3>
+        <button class="w-full p-2 hover:bg-blue-700 rounded cursor-pointer text-left" data-section="main">
+          <i class="fas fa-home mr-2"></i>Pantalla Principal
+        </button>
+      </div>
+
+                  <!-- Journal Section -->
+                  <div class="mb-8">
+                    <h3 class="text-lg font-semibold mb-4">Diario de Pensamientos</h3>
+                    <button class="w-full p-2 hover:bg-blue-700 rounded cursor-pointer text-left flex justify-between items-center" id="journalToggle">
+                      <span><i class="fas fa-book mr-2"></i>Mostrar Diario</span>
+                      <i class="fas fa-chevron-down transition-transform duration-300" id="journalIcon"></i>
+                    </button>
+                    <div id="journalList" class="hidden space-y-2 mt-2 p-4 bg-blue-900 rounded-lg">
+                      <button class="w-full p-2 hover:bg-blue-800 rounded" id="newEntryBtn">
+                        <i class="fas fa-plus mr-2"></i>Nueva Entrada
+                      </button>
+                      <button class="w-full p-2 hover:bg-blue-800 rounded" id="historyBtn">
+                        <i class="fas fa-history mr-2"></i>Historial
+                      </button>
+                      <button class="w-full p-2 hover:bg-red-600 text-red-100 rounded" id="clearAllBtn">
+                        <i class="fas fa-trash mr-2"></i>Borrar Todo
+                      </button>
+                    </div>
+                  </div>
+
+      <!-- Breathing Exercises Section -->
+
+
+
+            <!-- Emotion Diary Section -->
+      <div class="mb-8">
+        <h3 class="text-lg font-semibold mb-4">Registro de Emociones</h3>
+        <button class="w-full p-2 hover:bg-blue-700 rounded cursor-pointer text-left flex justify-between items-center" id="emotionToggle">
+          <span><i class="fas fa-heartbeat mr-2"></i>Mostrar Registro</span>
+          <i class="fas fa-chevron-down transition-transform duration-300" id="emotionIcon"></i>
+        </button>
+        <div id="emotionList" class="hidden space-y-2 mt-2 p-4 bg-blue-900 rounded-lg">
+          <button class="w-full p-2 hover:bg-blue-800 rounded" id="newEmotionBtn">
+            <i class="fas fa-plus mr-2"></i>Nueva Entrada
+          </button>
+          <button class="w-full p-2 hover:bg-blue-800 rounded" id="emotionHistoryBtn">
+            <i class="fas fa-clock mr-2"></i>Historial
+          </button>
+          <button class="w-full p-2 hover:bg-red-600 text-red-100 rounded" id="clearEmotionsBtn">
+            <i class="fas fa-trash mr-2"></i>Borrar Todo
+          </button>
+        </div>
+      </div>
+
+            <!-- Emotion Diary Section -->
+      <div class="mb-8">
+        <h3 class="text-lg font-semibold mb-4">Registro de Emociones</h3>
+        <button class="w-full p-2 hover:bg-blue-700 rounded cursor-pointer text-left flex justify-between items-center" id="emotionToggle">
+          <span><i class="fas fa-heartbeat mr-2"></i>Mostrar Registro</span>
+          <i class="fas fa-chevron-down transition-transform duration-300" id="emotionIcon"></i>
+        </button>
+        <div id="emotionList" class="hidden space-y-2 mt-2 p-4 bg-blue-900 rounded-lg">
+          <button class="w-full p-2 hover:bg-blue-800 rounded" id="newEmotionBtn">
+            <i class="fas fa-plus mr-2"></i>Nueva Entrada
+          </button>
+          <button class="w-full p-2 hover:bg-blue-800 rounded" id="emotionHistoryBtn">
+            <i class="fas fa-clock mr-2"></i>Historial
+          </button>
+          <button class="w-full p-2 hover:bg-red-600 text-red-100 rounded" id="clearEmotionsBtn">
+            <i class="fas fa-trash mr-2"></i>Borrar Todo
+          </button>
+        </div>
+      </div>
+
+      <!-- Breathing Exercises Section -->
+      <div class="mb-8">
+        <h3 class="text-lg font-semibold mb-4">Respiración</h3>
+
+
+
+
+        <button class="w-full p-2 hover:bg-blue-700 rounded cursor-pointer text-left flex justify-between items-center" id="respiracionToggle">
+          <span><i class="fas fa-lungs mr-2"></i>Mostrar Ejercicios</span>
+          <i class="fas fa-chevron-down transition-transform duration-300" id="respiracionIcon"></i>
+        </button>
+        <div id="respiracionList" class="hidden space-y-4 mt-2 p-4 bg-blue-900 rounded-lg">
+
+          <!-- Ejercicio 4-7-8 -->
+          <div class="bg-blue-800 p-4 rounded-lg">
+            <h4 class="font-semibold mb-2">4-7-8 Respiración</h4>
+            <p class="text-sm text-blue-200 mb-3">Inhala 4s - Sostén 7s - Exhala 8s</p>
+            <div class="flex space-x-2">
+              <button class="flex-1 bg-green-600 hover:bg-green-700 py-1 px-3 rounded text-sm" data-exercise="478">
+                <i class="fas fa-play mr-1"></i>Iniciar
+              </button>
+              <button class="flex-1 bg-red-600 hover:bg-red-700 py-1 px-3 rounded text-sm hidden stop-btn" data-exercise="478">
+                <i class="fas fa-stop mr-1"></i>Detener
+              </button>
+            </div>
+          </div>
+
+          <!-- Ejercicio Diafragmática -->
+          <div class="bg-blue-800 p-4 rounded-lg">
+            <h4 class="font-semibold mb-2">Respiración Diafragmática</h4>
+            <p class="text-sm text-blue-200 mb-3">Inhala 5s - Exhala 5s</p>
+            <div class="flex space-x-2">
+              <button class="flex-1 bg-green-600 hover:bg-green-700 py-1 px-3 rounded text-sm" data-exercise="diafragmatica">
+                <i class="fas fa-play mr-1"></i>Iniciar
+              </button>
+              <button class="flex-1 bg-red-600 hover:bg-red-700 py-1 px-3 rounded text-sm hidden stop-btn" data-exercise="diafragmatica">
+                <i class="fas fa-stop mr-1"></i>Detener
+              </button>
+            </div>
+          </div>
+
+          <!-- Ejercicio Cuadrada -->
+          <div class="bg-blue-800 p-4 rounded-lg">
+            <h4 class="font-semibold mb-2">Respiración Cuadrada</h4>
+            <p class="text-sm text-blue-200 mb-3">Inhala 4s - Sostén 4s - Exhala 4s - Pausa 4s</p>
+            <div class="flex space-x-2">
+              <button class="flex-1 bg-green-600 hover:bg-green-700 py-1 px-3 rounded text-sm" data-exercise="cuadrada">
+                <i class="fas fa-play mr-1"></i>Iniciar
+              </button>
+              <button class="flex-1 bg-red-600 hover:bg-red-700 py-1 px-3 rounded text-sm hidden stop-btn" data-exercise="cuadrada">
+                <i class="fas fa-stop mr-1"></i>Detener
+              </button>
+            </div>
+          </div>
+
+          <!-- Ejercicio Alterna -->
+          <div class="bg-blue-800 p-4 rounded-lg">
+            <h4 class="font-semibold mb-2">Respiración Alterna</h4>
+            <p class="text-sm text-blue-200 mb-3">Inhala 4s - Exhala 4s alternando fosas nasales</p>
+            <div class="flex space-x-2">
+              <button class="flex-1 bg-green-600 hover:bg-green-700 py-1 px-3 rounded text-sm" data-exercise="alterna">
+                <i class="fas fa-play mr-1"></i>Iniciar
+              </button>
+              <button class="flex-1 bg-red-600 hover:bg-red-700 py-1 px-3 rounded text-sm hidden stop-btn" data-exercise="alterna">
+                <i class="fas fa-stop mr-1"></i>Detener
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1">
+      <!-- Top Bar -->
+      <div class="bg-blue-700 text-white p-4 text-center">
+        <h1 class="text-2xl font-bold">FilterMind</h1>
+      </div>
+
+            <!-- Page Content -->
+      <div class="p-8 flex flex-col items-center justify-center min-h-[80vh]">
+        <!-- Journal Form -->
+        <div id="journalForm" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div class="bg-white rounded-lg shadow-lg p-6 max-w-md w-full">
+            <h2 class="text-2xl mb-4">Nueva Entrada</h2>
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2">Título:</label>
+              <input type="text" id="entryTitle" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+            </div>
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2">Pensamientos:</label>
+              <textarea id="entryText" rows="4" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500"></textarea>
+            </div>
+            <div class="flex justify-end">
+              <button id="cancelEntry" class="mr-2 bg-gray-300 hover:bg-gray-400 px-4 py-2 rounded">Cancelar</button>
+              <button id="saveEntry" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">Guardar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Entries List -->
+        <div id="entriesList" class="hidden w-full max-w-md bg-white p-6 rounded-lg shadow-lg">
+          <h3 class="text-lg font-semibold mb-4">Entradas Recientes</h3>
+          <div class="overflow-y-auto max-h-96">
+            <ul id="entriesContainer" class="space-y-4"></ul>
+          </div>
+        </div>
+
+        <div id="exercise-content" class="w-full max-w-md bg-white p-6 rounded-lg shadow-lg hidden">
+          <h2 id="exercise-title" class="text-2xl mb-4"></h2>
+          <p id="exercise-instructions" class="text-gray-700 mb-4"></p>
+          
+          <!-- Added Progress Bar -->
+          <div class="w-full mb-6">
+            <div class="bg-gray-200 rounded-full h-2.5">
+              <div id="progressBar" class="bg-blue-600 h-2.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+            </div>
+          </div>
+
+          <div class="flex space-x-4 mb-4">
+            <button id="start-exercise" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">
+              <i class="fas fa-play mr-2"></i>Empezar
+            </button>
+            <button id="stop-exercise" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded hidden">
+              <i class="fas fa-stop mr-2"></i>Detener
+            </button>
+          </div>
+          <div class="text-center">
+            <div class="w-32 h-32 mx-auto rounded-full bg-blue-100 flex items-center justify-center mb-4">
+              <span id="countdown" class="text-4xl font-bold text-blue-800">0</span>
+            </div>
+            <p id="exercise-phase" class="text-lg font-semibold text-blue-800"></p>
+          </div>
+        </div>
+
+                <!-- Emotion Entry Modal -->
+        <div id="emotionForm" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div class="bg-white rounded-lg shadow-lg p-6 max-w-md w-full">
+            <h2 class="text-2xl mb-4">Nueva Entrada Emocional</h2>
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2">Emoción:</label>
+              <select id="emotionSelect" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+                <option value="feliz">Feliz 😊</option>
+                <option value="triste">Triste 😢</option>
+                <option value="enojado">Enfadado 😠</option>
+                <option value="ansioso">Ansioso 😨</option>
+              </select>
+            </div>
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2">Intensidad (1-10):</label>
+              <input type="range" min="1" max="10" value="5" class="w-full h-2 bg-gray-300 rounded-lg appearance-none" id="intensitySlider">
+              <div class="flex justify-between mt-1">
+                <span>1</span>
+                <span>10</span>
+              </div>
+            </div>
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2">Nota:</label>
+              <textarea id="emotionNote" rows="3" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500"></textarea>
+            </div>
+            <div class="flex justify-end">
+              <button id="cancelEmotion" class="mr-2 bg-gray-300 hover:bg-gray-400 px-4 py-2 rounded">Cancelar</button>
+              <button id="saveEmotion" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">Guardar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Emotion History Panel -->
+        <div class="w-full max-w-md mt-8 hidden" id="emotionHistoryPanel">
+          <button id="hideEmotionHistory" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded mb-2">
+            Ocultar Historial
+          </button>
+          <div class="bg-white p-4 rounded-lg shadow-md">
+            <h3 class="text-lg font-semibold mb-4">Historial de Emociones</h3>
+            <ul id="emotionHistoryList" class="space-y-2"></ul>
+          </div>
+        </div>
+
+        <!-- Fixed Help Button -->
+        <div class="mb-6 text-center">
+          <span class="text-2xl font-semibold text-blue-600 hover:text-blue-800 cursor-pointer transition-colors duration-300" aria-label="Ayuda">Ayuda</span>
+        </div>
+
+
+        <div class="relative z-10 mt-4">
+          <button id="emergencyBtn" class="emergency-btn bg-red-600 hover:bg-red-700 text-white rounded-full h-32 w-32 flex items-center justify-center text-lg font-bold shadow-lg">
+            <i class="fas fa-phone-alt text-3xl"></i>
+          </button>
+        </div>
+
+        <!-- Added History Panel -->
+        <div class="w-full max-w-md mt-8 hidden" id="historyPanel">
+          <button id="showHistory" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded mb-2">
+            Ocultar Historial
+          </button>
+          <div class="bg-white p-4 rounded-lg shadow-md">
+            <h3 class="text-lg font-semibold mb-4">Historial de Ejercicios</h3>
+            <ul id="historyList" class="space-y-2"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="confirmModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+    <div class="bg-white p-6 rounded-lg max-w-sm w-full">
+      <h3 class="text-lg font-semibold mb-4">¿Está seguro de querer realizar una llamada al número de la vida?</h3>
+      <div class="flex justify-between">
+        <button id="confirmNo" class="bg-gray-300 hover:bg-gray-400 px-4 py-2 rounded">No</button>
+        <button id="confirmYes" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded">Sí</button>
+      </div>
+    </div>
+  </div>
+
+  <button id="finalizeButton" class="fixed bottom-4 right-4 bg-gray-300 hover:bg-gray-400 text-gray-800 p-3 rounded-full shadow-lg hidden z-50">
+    <i class="fas fa-times-circle text-2xl"></i>
+  </button>
+
+        <script src="script.js"></script>
+
+
+</body>
+</html>
